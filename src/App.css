@@ -1,0 +1,106 @@
+/* Reset básico */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Container centralizado */
+.container {
+  width: 35%;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Títulos */
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+/* Botões */
+.btn {
+  background-color: #28a745;
+  color: white;
+  padding: 5px 1px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #218838;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  padding: 5px 1px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  display: inline-block;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+/* Lista de carros */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #fff;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Formulários */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Reduzindo o tamanho das três primeiras caixas */
+.form-editar input[type="text"],
+.form-editar input[type="number"] {
+  width: 50%; /* Ajuste conforme necessário */
+  max-width: 300px; /* Define um limite de largura */
+  display: block;
+  margin: 5px auto;
+}
+
+/* Inputs e Select */
+input, select {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  margin-top: 5px;
+}
+
