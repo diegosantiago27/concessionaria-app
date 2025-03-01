@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../../services/funcionarioService';
+import funcionarioService from '../../services/funcionarioService'; // ✅ Correção aqui!
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faSave } from '@fortawesome/free-solid-svg-icons';
 import './FuncionarioForm.css';
@@ -13,7 +13,7 @@ function FuncionarioForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('/cadastrar', { nome, cargo, salario: Number(salario) })
+        funcionarioService.cadastrar({ nome, cargo, salario: Number(salario) }) // ✅ Correção aqui!
             .then(() => navigate('/funcionarios'))
             .catch(error => console.error('Erro ao cadastrar funcionário:', error));
     };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from '../../services/funcionarioService';
+import funcionarioService from '../../services/funcionarioService'; // ✅ Correção aqui!
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faSave } from '@fortawesome/free-solid-svg-icons';
 import './FuncionarioEdit.css';
@@ -11,17 +11,17 @@ function FuncionarioEdit() {
     const [funcionario, setFuncionario] = useState({ nome: '', cargo: '', salario: '' });
 
     useEffect(() => {
-        axios.get(`/buscar/${id}`)
+        funcionarioService.buscarPorId(id) // ✅ Correção aqui!
             .then(response => setFuncionario(response.data))
             .catch(error => console.error('Erro ao buscar funcionário:', error));
     }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`/atualizar/${id}`, {
+        funcionarioService.atualizar(id, {
             ...funcionario,
             salario: Number(funcionario.salario) // Converte para número
-        })
+        }) // ✅ Correção aqui!
             .then(() => navigate('/funcionarios'))
             .catch(error => console.error('Erro ao atualizar funcionário:', error));
     };

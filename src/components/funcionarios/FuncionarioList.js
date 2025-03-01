@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../../services/funcionarioService';
+import funcionarioService from '../../services/funcionarioService'; // ✅ Correção aqui!
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faPlus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './FuncionarioList.css';
@@ -10,14 +10,14 @@ function FuncionarioList() {
   const [funcionarios, setFuncionarios] = useState([]);
 
   useEffect(() => {
-    axios.get('/listar')
+    funcionarioService.listar() // ✅ Correção aqui!
       .then(response => setFuncionarios(response.data))
       .catch(error => console.error('Erro ao buscar funcionários:', error));
   }, []);
 
   const handleDelete = (id) => {
     if (window.confirm('Tem certeza que deseja excluir este funcionário?')) {
-      axios.delete(`/excluir/${id}`)
+      funcionarioService.excluir(id) // ✅ Correção aqui!
         .then(() => setFuncionarios(funcionarios.filter(funcionario => funcionario.objectId !== id)))
         .catch(error => console.error('Erro ao excluir funcionário:', error));
     }
@@ -30,7 +30,6 @@ function FuncionarioList() {
         <button onClick={() => navigate('/funcionarios/cadastrar')} className="btn btn-green">
           <FontAwesomeIcon icon={faPlus} /> Novo Funcionário
         </button>
-        {/* ✅ Novo botão de Voltar */}
         <button onClick={() => navigate('/')} className="btn btn-gray">
           <FontAwesomeIcon icon={faArrowLeft} /> Voltar
         </button>
