@@ -1,4 +1,4 @@
-/* Container principal */
+
 .container {
     width: 50%;
     margin: 20px auto;
@@ -9,14 +9,12 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Título */
 h1 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
 }
 
-/* Estrutura do formulário */
 .form-container {
     display: flex;
     flex-direction: column;
@@ -41,14 +39,12 @@ h1 {
     font-size: 14px;
 }
 
-/* Grupo de botões */
 .button-group {
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
 }
 
-/* Botões */
 .btn {
     display: flex;
     align-items: center;
@@ -60,7 +56,6 @@ h1 {
     font-size: 14px;
 }
 
-/* Botão de Atualizar */
 .btn-blue {
     background-color: #007BFF;
     color: white;
@@ -70,7 +65,6 @@ h1 {
     background-color: #0056b3;
 }
 
-/* Botão de Voltar */
 .btn-gray {
     background-color: #6c757d;
     color: white;

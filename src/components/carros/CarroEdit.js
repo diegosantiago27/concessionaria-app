@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from '../../services/carroService';
+import carroService from '../../services/carroService';
+import Header from '../../components/Header'; // ✅ Importando o cabeçalho
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faSave } from '@fortawesome/free-solid-svg-icons';
 import './CarroEdit.css';
@@ -11,17 +12,17 @@ function CarroEdit() {
     const [carro, setCarro] = useState({ modelo: '', ano: '', preco: '', status: 'Disponível' });
 
     useEffect(() => {
-        axios.get(`/buscar/${id}`)
+        carroService.buscarPorId(id)
             .then(response => setCarro(response.data))
             .catch(error => console.error('Erro ao buscar carro:', error));
     }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`/atualizar/${id}`, {
+        carroService.atualizar(id, {
             ...carro,
-            preco: Number(carro.preco), // Converte para número
-            ano: Number(carro.ano) // Converte para número
+            preco: Number(carro.preco),
+            ano: Number(carro.ano)
         })
             .then(() => navigate('/carros'))
             .catch(error => console.error('Erro ao atualizar carro:', error));
@@ -29,7 +30,8 @@ function CarroEdit() {
 
     return (
         <div className="container">
-            <h1>Editar Carro</h1>
+            <Header title="Editar Carro" /> 
+
             <form className="form-container" onSubmit={handleSubmit}>
                 <div className="input-group">
                     <label>Modelo</label>

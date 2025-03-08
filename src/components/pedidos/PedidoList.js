@@ -24,13 +24,21 @@ function PedidoList() {
     };
 
     return (
-        <div className="container">
+        <div className="container" style={{
+            width: "95%", 
+            maxWidth: "1200px", 
+            margin: "20px auto", 
+            background: "transparent", 
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
+        }}>
             <h1>Lista de Pedidos</h1>
             <div className="button-container">
                 <button onClick={() => navigate('/pedidos/cadastrar')} className="btn btn-green">
                     <FontAwesomeIcon icon={faPlus} /> Novo Pedido
                 </button>
-                {/* ✅ Novo botão de Voltar */}
+                {}
                 <button onClick={() => navigate('/')} className="btn btn-gray">
                     <FontAwesomeIcon icon={faArrowLeft} /> Voltar
                 </button>
@@ -39,6 +47,7 @@ function PedidoList() {
                 <thead>
                     <tr>
                         <th>Cliente</th>
+                        <th>Funcionario</th>
                         <th>Carro</th>
                         <th>Status</th>
                         <th>Data</th>
@@ -49,6 +58,7 @@ function PedidoList() {
                     {pedidos.map(pedido => (
                         <tr key={pedido.id}>
                             <td>{pedido.cliente}</td>
+                            <td>{pedido.funcionario}</td>
                             <td>{pedido.carro}</td>
                             <td>{pedido.status}</td>
                             <td>{new Date(pedido.data).toLocaleDateString()}</td>

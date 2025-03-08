@@ -13,13 +13,21 @@ function FuncionarioForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        funcionarioService.cadastrar({ nome, cargo, salario: Number(salario) }) // ✅ Correção aqui!
+        funcionarioService.cadastrar({ nome, cargo, salario: Number(salario) })
             .then(() => navigate('/funcionarios'))
             .catch(error => console.error('Erro ao cadastrar funcionário:', error));
     };
 
     return (
-        <div className="container">
+        <div className="container"style={{
+            width: "95%", 
+            maxWidth: "1200px", 
+            margin: "20px auto", 
+            background: "transparent", 
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
+        }}>
             <h1>Cadastrar Funcionário</h1>
             <form className="form-container" onSubmit={handleSubmit}>
                 <div className="input-group">

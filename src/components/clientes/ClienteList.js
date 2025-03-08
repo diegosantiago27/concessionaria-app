@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import clienteService from '../../services/clienteService'; // Corrigindo a importação
+import clienteService from '../../services/clienteService';
+import Header from '../../components/Header'; // ✅ Importando o Header
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faSave, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -25,8 +26,16 @@ function ClienteList() {
     };
 
     return (
-        <div className="container">
-            <h1>Lista de Clientes</h1>
+        <div className="container" style={{
+            width: "95%",
+            maxWidth: "1200px",
+            margin: "20px auto",
+            background: "transparent",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
+        }}>
+             <Header title="Lista de Clientes" />
 
             <div className="button-container">
                 <button onClick={() => navigate('/clientes/cadastrar')} className="btn btn-green">

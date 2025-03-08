@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import funcionarioService from '../../services/funcionarioService'; // ✅ Correção aqui!
+import funcionarioService from '../../services/funcionarioService';
+import Header from '../../components/Header'; // ✅ Adicionando o cabeçalho
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faPlus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './FuncionarioList.css';
@@ -10,14 +11,14 @@ function FuncionarioList() {
   const [funcionarios, setFuncionarios] = useState([]);
 
   useEffect(() => {
-    funcionarioService.listar() // ✅ Correção aqui!
+    funcionarioService.listar()
       .then(response => setFuncionarios(response.data))
       .catch(error => console.error('Erro ao buscar funcionários:', error));
   }, []);
 
   const handleDelete = (id) => {
     if (window.confirm('Tem certeza que deseja excluir este funcionário?')) {
-      funcionarioService.excluir(id) // ✅ Correção aqui!
+      funcionarioService.excluir(id)
         .then(() => setFuncionarios(funcionarios.filter(funcionario => funcionario.objectId !== id)))
         .catch(error => console.error('Erro ao excluir funcionário:', error));
     }
@@ -25,7 +26,8 @@ function FuncionarioList() {
 
   return (
     <div className="container">
-      <h1>Lista de Funcionários</h1>
+      <Header title="Lista de Funcionários" /> {/* ✅ Adicionando o cabeçalho */}
+
       <div className="button-container">
         <button onClick={() => navigate('/funcionarios/cadastrar')} className="btn btn-green">
           <FontAwesomeIcon icon={faPlus} /> Novo Funcionário
@@ -34,6 +36,7 @@ function FuncionarioList() {
           <FontAwesomeIcon icon={faArrowLeft} /> Voltar
         </button>
       </div>
+
       <table className="table">
         <thead>
           <tr>
@@ -48,7 +51,7 @@ function FuncionarioList() {
             <tr key={funcionario.objectId}>
               <td>{funcionario.nome}</td>
               <td>{funcionario.cargo}</td>
-              <td>R$ {funcionario.salario}</td>
+              <td>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(funcionario.salario)}</td> {/* 🔹 Formatação correta do salário */}
               <td>
                 <button onClick={() => navigate(`/funcionarios/editar/${funcionario.objectId}`)} className="btn btn-blue">
                   <FontAwesomeIcon icon={faEdit} />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import carroService from '../../services/carroService'; // Corrigindo a importação
+import carroService from '../../services/carroService';
+import Header from '../../components/Header'; // ✅ Importando o cabeçalho
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faPlus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './CarroList.css';
@@ -25,7 +26,8 @@ function CarroList() {
 
     return (
         <div className="container">
-            <h1>Lista de Carros</h1>
+            <Header title="Lista de Carros" /> 
+
             <div className="button-container">
                 <button onClick={() => navigate('/carros/cadastrar')} className="btn btn-green">
                     <FontAwesomeIcon icon={faPlus} /> Novo Carro
@@ -34,6 +36,7 @@ function CarroList() {
                     <FontAwesomeIcon icon={faArrowLeft} /> Voltar
                 </button>
             </div>
+
             <table className="table">
                 <thead>
                     <tr>

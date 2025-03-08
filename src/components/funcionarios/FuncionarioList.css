@@ -1,4 +1,4 @@
-/* Container principal */
+
 .container {
     width: 80%;
     margin: 20px auto;
@@ -9,21 +9,18 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Título */
 h1 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
 }
 
-/* Botões de ação */
 .button-container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
 }
 
-/* Botões */
 .btn {
     display: flex;
     align-items: center;
@@ -35,7 +32,6 @@ h1 {
     font-size: 14px;
 }
 
-/* Botão de Novo Funcionário */
 .btn-green {
     background-color: #28a745;
     color: white;
@@ -45,7 +41,6 @@ h1 {
     background-color: #218838;
 }
 
-/* Botão de Voltar */
 .btn-gray {
     background-color: #6c757d;
     color: white;
@@ -55,7 +50,6 @@ h1 {
     background-color: #545b62;
 }
 
-/* Tabela */
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -77,7 +71,6 @@ h1 {
     background-color: #f2f2f2;
 }
 
-/* Botões de ação */
 .btn-blue {
     background-color: #007BFF;
     color: white;

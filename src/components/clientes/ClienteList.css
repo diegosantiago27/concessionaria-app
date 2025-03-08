@@ -1,39 +1,59 @@
 .container {
-    width: 80%;
+    width: 95%;
+    max-width: 1200px;
     margin: 20px auto;
     font-family: Arial, sans-serif;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 10px;
 }
 
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-.button-container {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10px;
-}
-
-.btn {
-    border: none;
-    padding: 8px 12px;
-    margin: 5px;
-    cursor: pointer;
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
     border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
     font-size: 14px;
-    display: flex;
+}
+
+.table th:nth-child(1),
+.table td:nth-child(1) {
+    width: 25%;
+    min-width: 180px;
+}
+
+.table th:nth-child(2),
+.table td:nth-child(2) {
+    width: 30%;
+    min-width: 220px;
+}
+
+.table th:nth-child(4),
+.table td:nth-child(4) {
+    width: 15%;
+    min-width: 120px;
+}
+
+.table td .btn {
+    display: inline-flex;
+    justify-content: center;
     align-items: center;
-    gap: 5px;
-}
-
-.btn-green {
-    background-color: #28a745;
-    color: white;
-}
-
-.btn-green:hover {
-    background-color: #218838;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    padding: 0;
+    margin: 2px;
+    border-radius: 5px;
 }
 
 .btn-blue {
@@ -41,40 +61,7 @@ h1 {
     color: white;
 }
 
-.btn-blue:hover {
-    background-color: #0056b3;
-}
-
 .btn-red {
     background-color: #dc3545;
     color: white;
-}
-
-.btn-red:hover {
-    background-color: #b52b37;
-}
-
-/* Estilo da Tabela */
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.table th,
-.table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: center;
-}
-
-.table th {
-    background: #007BFF;
-    color: white;
-}
-
-.table tbody tr:nth-child(even) {
-    background: #f9f9f9;
 }

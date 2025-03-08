@@ -19,7 +19,15 @@ function ClienteForm() {
     };
 
     return (
-        <div className="container">
+        <div className="container"style={{
+            width: "95%", 
+            maxWidth: "1200px", 
+            margin: "20px auto", 
+            background: "transparent", 
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
+        }}>
             <h1>Cadastrar Cliente</h1>
             <form className="form-container" onSubmit={handleSubmit}>
 

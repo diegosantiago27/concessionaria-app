@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import axios from '../../services/clienteService';
+import clienteService from '../../services/clienteService';
+import Header from '../../components/Header'; // ✅ Importando o Header
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faSave } from '@fortawesome/free-solid-svg-icons';
+
 import './ClienteEdit.css';
 
 function ClienteEdit() {
@@ -11,35 +13,48 @@ function ClienteEdit() {
     const [cliente, setCliente] = useState({ nome: '', email: '', telefone: '' });
 
     useEffect(() => {
-        axios.get(`/buscar/${id}`)
+        clienteService.buscarPorId(id)
             .then(response => setCliente(response.data))
             .catch(error => console.error('Erro ao buscar cliente:', error));
     }, [id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`/atualizar/${id}`, cliente)
+        clienteService.atualizar(id, cliente)
             .then(() => navigate('/clientes'))
-            .catch(error => console.error('Erro ao atualizar:', error));
+            .catch(error => console.error('Erro ao atualizar cliente:', error));
     };
 
     return (
         <div className="container">
-            <h1>Editar Cliente</h1>
+            <Header title="Editar Cliente" /> {/* ✅ Adicionando o cabeçalho */}
+            
             <form className="form-container" onSubmit={handleSubmit}>
                 <div className="input-group">
                     <label>Nome</label>
-                    <input type="text" value={cliente.nome} onChange={e => setCliente({ ...cliente, nome: e.target.value })} />
+                    <input 
+                        type="text" 
+                        value={cliente.nome} 
+                        onChange={e => setCliente({ ...cliente, nome: e.target.value })}
+                    />
                 </div>
 
                 <div className="input-group">
                     <label>Email</label>
-                    <input type="email" value={cliente.email} onChange={e => setCliente({ ...cliente, email: e.target.value })} />
+                    <input 
+                        type="email" 
+                        value={cliente.email} 
+                        onChange={e => setCliente({ ...cliente, email: e.target.value })}
+                    />
                 </div>
 
                 <div className="input-group">
                     <label>Telefone</label>
-                    <input type="text" value={cliente.telefone} onChange={e => setCliente({ ...cliente, telefone: e.target.value })} />
+                    <input 
+                        type="text" 
+                        value={cliente.telefone} 
+                        onChange={e => setCliente({ ...cliente, telefone: e.target.value })}
+                    />
                 </div>
 
                 <div className="button-group">
