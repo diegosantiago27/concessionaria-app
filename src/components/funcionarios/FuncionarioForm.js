@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import funcionarioService from '../../services/funcionarioService'; // ✅ Correção aqui!
+import funcionarioService from '../../services/funcionarioService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faSave } from '@fortawesome/free-solid-svg-icons';
+import Header from '../../components/Header';
 import './FuncionarioForm.css';
 
 function FuncionarioForm() {
@@ -20,15 +21,15 @@ function FuncionarioForm() {
 
     return (
         <div className="container"style={{
-            width: "95%", 
-            maxWidth: "1200px", 
-            margin: "20px auto", 
-            background: "transparent", 
+            width: "31%",
+            maxWidth: "1200px",
+            margin: "20px auto",
+            background: "transparent",
             padding: "20px",
             borderRadius: "10px",
             boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
         }}>
-            <h1>Cadastrar Funcionário</h1>
+            <Header title="Cadastro de Funcionarios" />
             <form className="form-container" onSubmit={handleSubmit}>
                 <div className="input-group">
                     <label>Nome</label>

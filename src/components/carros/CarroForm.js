@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import carroService from '../../services/carroService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faSave } from '@fortawesome/free-solid-svg-icons';
+import Header from '../../components/Header'; 
 import './CarroForm.css';
 
 function CarroForm() {
@@ -21,7 +22,7 @@ function CarroForm() {
 
   return (
     <div className="container"style={{
-      width: "95%", 
+      width: "31%", 
       maxWidth: "1200px", 
       margin: "20px auto", 
       background: "transparent", 
@@ -29,7 +30,7 @@ function CarroForm() {
       borderRadius: "10px",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
   }}>
-      <h1>Cadastrar Novo Carro</h1>
+      <Header title="Cadastro de Carro" /> 
       <form className="form-container" onSubmit={handleSubmit}>
         <div className="input-group">
           <label>Modelo</label>

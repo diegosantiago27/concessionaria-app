@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import pedidoService from '../../services/pedidoService';
 import clienteService from '../../services/clienteService';
 import carroService from '../../services/carroService';
-import funcionarioService from '../../services/funcionarioService'; // ✅ Importando o serviço de funcionário
+import funcionarioService from '../../services/funcionarioService';
 import Header from '../../components/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faSave } from '@fortawesome/free-solid-svg-icons';
@@ -29,30 +29,41 @@ function PedidoEdit() {
         pedidoService.buscarPorId(id)
             .then(response => {
                 const data = response.data;
-                setPedido(data);
+                setPedido({
+                    clienteId: data.clienteId || '',
+                    carroId: data.carroId || '',
+                    funcionarioId: data.funcionarioId || '',
+                    status: data.status || ''
+                });
 
-                // Buscar nome do Cliente
-                if (data.clienteId) {
+                console.log("Pedido recebido:", data);
+
+                if (data.cliente) {
+                    setClienteNome(data.cliente);
+                } else if (data.clienteId) {
                     clienteService.buscarPorId(data.clienteId)
-                        .then(res => setClienteNome(res.data.nome))
+                        .then(res => setClienteNome(res.data.cliente))
                         .catch(() => setClienteNome('Cliente não encontrado'));
                 } else {
                     setClienteNome('Cliente não encontrado');
                 }
 
-                // Buscar nome do Carro
-                if (data.carroId) {
+
+                if (data.carro) {
+                    setCarroNome(data.carro);
+                } else if (data.carroId) {
                     carroService.buscarPorId(data.carroId)
-                        .then(res => setCarroNome(res.data.modelo))
+                        .then(res => setCarroNome(res.data.carro))
                         .catch(() => setCarroNome('Carro não encontrado'));
                 } else {
                     setCarroNome('Carro não encontrado');
                 }
 
-                // Buscar nome do Funcionário
-                if (data.funcionarioId) {
+                if (data.funcionario) {
+                    setFuncionarioNome(data.funcionario);
+                } else if (data.funcionarioId) {
                     funcionarioService.buscarPorId(data.funcionarioId)
-                        .then(res => setFuncionarioNome(res.data.nome))
+                        .then(res => setFuncionarioNome(res.data.funcionario))
                         .catch(() => setFuncionarioNome('Funcionário não encontrado'));
                 } else {
                     setFuncionarioNome('Funcionário não encontrado');
@@ -70,8 +81,16 @@ function PedidoEdit() {
     };
 
     return (
-        <div className="container">
-            <Header title="Editar Pedido" /> 
+        <div className="container" style={{
+            width: "31%",
+            maxWidth: "1200px",
+            margin: "20px auto",
+            background: "transparent",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
+        }}>
+            <Header title="Editar Pedido" />
 
             <form className="form-container" onSubmit={handleSubmit}>
                 <div className="input-group">
@@ -91,8 +110,8 @@ function PedidoEdit() {
 
                 <div className="input-group">
                     <label>Status</label>
-                    <select 
-                        value={pedido.status} 
+                    <select
+                        value={pedido.status}
                         onChange={e => setPedido({ ...pedido, status: e.target.value })}
                     >
                         <option value="Venda Iniciada">Venda Iniciada</option>

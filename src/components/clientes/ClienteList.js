@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import clienteService from '../../services/clienteService';
-import Header from '../../components/Header'; // ✅ Importando o Header
+import Header from '../../components/Header'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faSave, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 

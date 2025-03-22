@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import carroService from '../../services/carroService';
-import Header from '../../components/Header'; // ✅ Importando o cabeçalho
+import Header from '../../components/Header'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faPlus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './CarroList.css';
@@ -25,7 +25,15 @@ function CarroList() {
     };
 
     return (
-        <div className="container">
+        <div className="container" style={{
+            width: "95%",
+            maxWidth: "1200px",
+            margin: "20px auto",
+            background: "transparent",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
+        }}>
             <Header title="Lista de Carros" /> 
 
             <div className="button-container">

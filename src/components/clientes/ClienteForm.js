@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import clienteService from '../../services/clienteService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faSave } from '@fortawesome/free-solid-svg-icons';
+import Header from '../../components/Header'; 
 import './ClienteForm.css';
 
 function ClienteForm() {
@@ -20,7 +21,7 @@ function ClienteForm() {
 
     return (
         <div className="container"style={{
-            width: "95%", 
+            width: "31%", 
             maxWidth: "1200px", 
             margin: "20px auto", 
             background: "transparent", 
@@ -28,7 +29,7 @@ function ClienteForm() {
             borderRadius: "10px",
             boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
         }}>
-            <h1>Cadastrar Cliente</h1>
+            <Header title="Cadastro de Cliente" />
             <form className="form-container" onSubmit={handleSubmit}>
 
                 <div className="input-group">

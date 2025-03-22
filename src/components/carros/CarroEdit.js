@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import carroService from '../../services/carroService';
-import Header from '../../components/Header'; // ✅ Importando o cabeçalho
+import Header from '../../components/Header'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faSave } from '@fortawesome/free-solid-svg-icons';
 import './CarroEdit.css';
@@ -29,7 +29,15 @@ function CarroEdit() {
     };
 
     return (
-        <div className="container">
+        <div className="container" style={{
+            width: "31%",
+            maxWidth: "1200px",
+            margin: "20px auto",
+            background: "transparent",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
+        }}>
             <Header title="Editar Carro" /> 
 
             <form className="form-container" onSubmit={handleSubmit}>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import clienteService from '../../services/clienteService';
 import carroService from '../../services/carroService';
 import funcionarioService from '../../services/funcionarioService';
+import Header from '../../components/Header';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faSave } from '@fortawesome/free-solid-svg-icons';
@@ -67,17 +68,17 @@ function PedidoForm() {
 
     return (
         <div className="container" style={{
-            width: "95%", 
-            maxWidth: "1200px", 
-            margin: "20px auto", 
-            background: "transparent", 
+            width: "31%",
+            maxWidth: "1200px",
+            margin: "20px auto",
+            background: "transparent",
             padding: "20px",
             borderRadius: "10px",
             boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
         }}>
-            <h2>Cadastrar Pedido</h2>
+            <Header title="Cadastrar Pedido" /> 
             <form className="form-container" onSubmit={handleSubmit}>
-                 {/* Seleção de Funcionário */}
+                 
                  {<div className="input-group">
                     <label>Selecione um Funcionário:</label>
                     <select value={funcionarioSelecionado} onChange={(e) => setFuncionarioSelecionado(e.target.value)} required>

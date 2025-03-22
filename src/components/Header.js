@@ -1,5 +1,5 @@
 import React from 'react';
-import './Header.css'; // Arquivo de estilos do header
+import './Header.css'; 
 
 function Header({ title }) {
     return (

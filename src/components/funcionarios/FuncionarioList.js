@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import funcionarioService from '../../services/funcionarioService';
-import Header from '../../components/Header'; // ✅ Adicionando o cabeçalho
+import Header from '../../components/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faPlus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import './FuncionarioList.css';
@@ -25,8 +25,16 @@ function FuncionarioList() {
   };
 
   return (
-    <div className="container">
-      <Header title="Lista de Funcionários" /> {/* ✅ Adicionando o cabeçalho */}
+    <div className="container" style={{
+      width: "95%",
+      maxWidth: "1200px",
+      margin: "20px auto",
+      background: "transparent",
+      padding: "20px",
+      borderRadius: "10px",
+      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
+  }}>
+      <Header title="Lista de Funcionários" /> 
 
       <div className="button-container">
         <button onClick={() => navigate('/funcionarios/cadastrar')} className="btn btn-green">
@@ -51,7 +59,7 @@ function FuncionarioList() {
             <tr key={funcionario.objectId}>
               <td>{funcionario.nome}</td>
               <td>{funcionario.cargo}</td>
-              <td>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(funcionario.salario)}</td> {/* 🔹 Formatação correta do salário */}
+              <td>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(funcionario.salario)}</td> 
               <td>
                 <button onClick={() => navigate(`/funcionarios/editar/${funcionario.objectId}`)} className="btn btn-blue">
                   <FontAwesomeIcon icon={faEdit} />

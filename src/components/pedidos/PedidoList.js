@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import pedidoService from '../../services/pedidoService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash, faPlus, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import Header from '../../components/Header';
 import './PedidoList.css';
 
 function PedidoList() {
@@ -24,16 +25,16 @@ function PedidoList() {
     };
 
     return (
-        <div className="container" style={{
-            width: "95%", 
-            maxWidth: "1200px", 
-            margin: "20px auto", 
-            background: "transparent", 
+        <div className="container"style={{
+            width: "95%",
+            maxWidth: "1200px",
+            margin: "20px auto",
+            background: "transparent",
             padding: "20px",
             borderRadius: "10px",
             boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
         }}>
-            <h1>Lista de Pedidos</h1>
+            <Header title="Lista de Pedidos" /> 
             <div className="button-container">
                 <button onClick={() => navigate('/pedidos/cadastrar')} className="btn btn-green">
                     <FontAwesomeIcon icon={faPlus} /> Novo Pedido

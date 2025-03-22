@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import funcionarioService from '../../services/funcionarioService';
-import Header from '../../components/Header'; // ✅ Adicionando o cabeçalho
+import Header from '../../components/Header'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faSave } from '@fortawesome/free-solid-svg-icons';
 import './FuncionarioEdit.css';
@@ -21,15 +21,23 @@ function FuncionarioEdit() {
         e.preventDefault();
         funcionarioService.atualizar(id, {
             ...funcionario,
-            salario: Number(funcionario.salario) // 🔹 Convertendo para número antes de salvar
+            salario: Number(funcionario.salario) 
         })
             .then(() => navigate('/funcionarios'))
             .catch(error => console.error('Erro ao atualizar funcionário:', error));
     };
 
     return (
-        <div className="container">
-            <Header title="Editar Funcionário" /> {/* ✅ Adicionando o cabeçalho */}
+        <div className="container" style={{
+            width: "31%",
+            maxWidth: "1200px",
+            margin: "20px auto",
+            background: "transparent",
+            padding: "20px",
+            borderRadius: "10px",
+            boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)"
+        }}>
+            <Header title="Editar Funcionário" />
 
             <form className="form-container" onSubmit={handleSubmit}>
                 <div className="input-group">
@@ -61,7 +69,7 @@ function FuncionarioEdit() {
                         type="text" 
                         value={funcionario.salario} 
                         onChange={e => {
-                            let valor = e.target.value.replace(/\D/g, ''); // 🔹 Mantém apenas números
+                            let valor = e.target.value.replace(/\D/g, '');
                             setFuncionario({ ...funcionario, salario: valor });
                         }} 
                         required 
