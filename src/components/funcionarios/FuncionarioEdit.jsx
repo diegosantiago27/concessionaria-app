@@ -74,19 +74,4 @@ function FuncionarioEdit() {
                         }} 
                         required 
                     />
-                </div>
-
-                <div className="button-group">
-                    <button type="submit" className="btn btn-blue">
-                        <FontAwesomeIcon icon={faSave} /> Atualizar
-                    </button>
-                    <button type="button" onClick={() => navigate('/funcionarios')} className="btn btn-gray">
-                        <FontAwesomeIcon icon={faArrowLeft} /> Voltar
-                    </button>
-                </div>
-            </form>
-        </div>
-    );
-}
-
-export default FuncionarioEdit;
+         
